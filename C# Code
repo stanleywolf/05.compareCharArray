@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _05.compareCharArrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            char[] firtsArr = Console.ReadLine()
+                .Split(' ').Select(char.Parse)
+                .ToArray();
+            char[] secondArr = Console.ReadLine()
+               .Split(' ').Select(char.Parse)
+               .ToArray();
+            int lenght = Math.Min(firtsArr.Length, secondArr.Length);
+           
+            for (int i = 0; i < lenght; i++)
+            {
+
+                if (firtsArr[i] < secondArr[i])
+                {
+                    GetFirstString(firtsArr, secondArr);
+                    return;
+                }
+                else if (firtsArr[i] > secondArr[i])
+                {
+                    GetFirstString(secondArr, firtsArr);
+                    return;
+                }
+                else
+                {
+                    GetSmallArray(firtsArr, secondArr);
+                    return;
+                }
+            }
+        }
+
+        private static void GetFirstString(char[] firtsArr, char[] secondArr)
+        {
+            Console.WriteLine(string.Join("", firtsArr));
+            Console.WriteLine(string.Join("", secondArr));
+        }
+
+        private static void GetSmallArray(char[] firtsArr, char[] secondArr)
+        {
+            if (firtsArr.Length <= secondArr.Length)
+            {
+                Console.WriteLine(string.Join("", firtsArr));
+                Console.WriteLine(string.Join("", secondArr));
+            }
+            else
+            {
+                Console.WriteLine(string.Join("", secondArr));
+                Console.WriteLine(string.Join("", firtsArr));
+            }
+        }
+    }
+}
